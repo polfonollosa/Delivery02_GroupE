@@ -23,4 +23,21 @@ public class EnemyAlarm : MonoBehaviour
 
         _alarmRenderer.color = color;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerDetected();
+        }
+    }
+
+    // Detecta cuando un objeto sale del área del trigger
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerLeft();
+        }
+    }
 }
